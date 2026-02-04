@@ -1,0 +1,2 @@
+# QuackCmd
+Small plugin.
