@@ -1,0 +1,4 @@
+name: QuackCmd
+version: '1.0.0'
+main: io.turbo.random.quackCmd.QuackCmd
+api-version: '1.21'
