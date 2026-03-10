@@ -57,7 +57,6 @@ public class QuackCmd extends JavaPlugin implements Listener {
                 .build();
 
         FastInvManager.register(this);
-        getServer().getPluginManager().registerEvents(new JobCensor(), this);
         saveDefaultConfig();
     }
 
