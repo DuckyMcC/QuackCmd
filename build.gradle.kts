@@ -27,8 +27,6 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok:1.18.42")
 
     implementation("dev.rollczi:litecommands-bukkit:3.10.2")
-    implementation("fr.mrmicky:fastinv:3.1.2")
-
     implementation("org.spongepowered:configurate-hocon:4.2.0")
 }
 
@@ -44,6 +42,7 @@ tasks.build {
 
 tasks.shadowJar {
     relocate("fr.mrmicky.fastinv", "io.turbo.random.quackcmd.libs.fastinv")
+
     relocate("dev.rollczi.litecommands", "io.turbo.random.quackcmd.libs.litecommands")
 }
 
