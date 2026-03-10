@@ -1,0 +1,8 @@
+name: QuackCmd
+version: '1.0.0'
+main: io.turbo.random.quackCmd.QuackCmd
+api-version: '1.21'
+permissions:
+  testplugin.jobcensor:
+    description: Allows a player to not receive the job message.
+    default: op
