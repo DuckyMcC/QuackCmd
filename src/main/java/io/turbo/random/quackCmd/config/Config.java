@@ -17,31 +17,30 @@ import java.util.*;
 public class Config {
 
     private FileConfiguration config;
-    private static QuackCmd quackCmd;
+    private QuackCmd quackCmd;
     @Getter private List<Map.Entry<String, Integer>> leaderboardCache = new ArrayList<>();
-    @Getter private static Config instance;
-    public ItemBuilder leaderboard;
+    @Getter public static Config instance;
     private FileConfiguration cfg;
     public static List<String> lblore;
 
     public Config(QuackCmd plugin) {
-        this.quackCmd = plugin;
         instance = this;
+        this.quackCmd = plugin;
+        this.cfg = quackCmd.getConfig();
+        this.config = quackCmd.getInstance().getConfig();
     }
 
     public void reloadConfig() {
         YamlConfiguration.loadConfiguration(new File(QuackCmd.getInstance().getDataFolder(), "config.yml"));
         quackCmd.reloadConfig();
-        this.cfg = quackCmd.getConfig();
     }
-
+    
     public String getEntrybyName(String name) {
-        this.config = quackCmd.getInstance().getConfig();
         FileConfiguration conf = quackCmd.getInstance().getConfig();
         String username = String.valueOf(conf.getString("entries." + name + ".clicks"));
         int clicks = config.getInt("entries." + name + ".clicks", 0);
         String clickstostr = Integer.toString(clicks);
-
+            
         if (clicks == 0) {
             return "This player has no ";
         }
@@ -78,10 +77,6 @@ public class Config {
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                 .limit(5)
                 .toList());
-    }
-
-    public void injectUpdate(String player, int clicks) {
-        updateCache();
     }
 
     public List<Map.Entry<String, Integer>> initLb() {
