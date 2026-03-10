@@ -8,7 +8,6 @@ import io.turbo.random.quackCmd.commands.subcommand.Leaderboard;
 import io.turbo.random.quackCmd.commands.subcommand.ReloadConfig;
 import io.turbo.random.quackCmd.commands.subcommand.Stats;
 import io.turbo.random.quackCmd.config.Config;
-import io.turbo.random.quackCmd.listeners.JobCensor;
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
@@ -26,6 +25,7 @@ import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.plugin.java.JavaPlugin;
 import io.turbo.random.quackCmd.commands.Quack;
 import io.turbo.random.quackCmd.util.FastInvManager;
+import net.kyori.adventure.text.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,28 +35,30 @@ import java.util.HashMap;
 * @since 2/5/2026
 */
 
-public class QuackCmd extends JavaPlugin implements Listener {
+public final class QuackCmd extends JavaPlugin implements Listener {
     private LiteCommands<CommandSender> liteCommands;
-    @Getter
-    public static QuackCmd instance;
+    @Getter public static QuackCmd instance;
 
+    public QuackCmd() {
+        instance = this;
+    }
 
     @Override
     public void onEnable() {
-        instance = this;
         Config config = new Config(this);
         config.reloadConfig();
         config.updateCache();
+        
         this.liteCommands = LiteBukkitFactory.builder("my-plugin", this)
                 .commands(new Quack(),
                 new ReloadConfig(),
                 new Stats(),
                 new Leaderboard(),
-                new ClearCache()
-                )
+                new ClearCache())
                 .build();
 
         FastInvManager.register(this);
+        Bukkit.getConsoleSender().sendMessage(Component.text("Enabled QuackCmd and registered all commands!"));
         saveDefaultConfig();
     }
 
@@ -65,5 +67,6 @@ public class QuackCmd extends JavaPlugin implements Listener {
         if (this.liteCommands != null) {
             this.liteCommands.unregister();
         }
+        Bukkit.getConsoleSender().sendMessage(Component.text("Disabling QuackCmd!"));
     }
 }
