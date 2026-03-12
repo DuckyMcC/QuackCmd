@@ -28,6 +28,8 @@ public class Config {
         this.quackCmd = plugin;
         this.cfg = quackCmd.getConfig();
         this.config = quackCmd.getInstance().getConfig();
+        reloadConfig();
+        updateCache();
     }
 
     public void reloadConfig() {
