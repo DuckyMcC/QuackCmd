@@ -46,9 +46,7 @@ public final class QuackCmd extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         Config config = new Config(this);
-        config.reloadConfig();
-        config.updateCache();
-        
+                
         this.liteCommands = LiteBukkitFactory.builder("my-plugin", this)
                 .commands(new Quack(),
                 new ReloadConfig(),
