@@ -33,12 +33,12 @@ public class Config {
     }
 
     public void reloadConfig() {
-        YamlConfiguration.loadConfiguration(new File(QuackCmd.getInstance().getDataFolder(), "config.yml"));
+        YamlConfiguration.loadConfiguration(new File(quackCmd.getDataFolder(), "config.yml"));
         quackCmd.reloadConfig();
     }
     
     public String getEntrybyName(String name) {
-        FileConfiguration conf = quackCmd.getInstance().getConfig();
+        FileConfiguration conf = quackCmd.getConfig();
         String username = String.valueOf(conf.getString("entries." + name + ".clicks"));
         int clicks = config.getInt("entries." + name + ".clicks", 0);
         String clickstostr = Integer.toString(clicks);
@@ -66,11 +66,9 @@ public class Config {
             return;
         }
         section.getConfigurationSection("entries");
-        if (section == null) return;
-
+        
         Map<String, Integer> data = new HashMap<>();
         for (String user : section.getKeys(false)) {
-
             int clicks = section.getInt(user + ".clicks");
             data.put(user, clicks);
         }
