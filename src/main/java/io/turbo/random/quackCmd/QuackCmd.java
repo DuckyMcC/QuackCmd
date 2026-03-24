@@ -45,10 +45,11 @@ public final class QuackCmd extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        Config config = new Config(this);
-                
+        new Config(this);
+        
         this.liteCommands = LiteBukkitFactory.builder("my-plugin", this)
-                .commands(new Quack(),
+                .commands(
+                new Quack(),
                 new ReloadConfig(),
                 new Stats(),
                 new Leaderboard(),
@@ -62,9 +63,7 @@ public final class QuackCmd extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-        if (this.liteCommands != null) {
-            this.liteCommands.unregister();
-        }
+        if (liteCommands != null) liteCommands.unregister();
         Bukkit.getConsoleSender().sendMessage(Component.text("Disabling QuackCmd!"));
     }
 }
