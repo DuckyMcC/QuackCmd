@@ -9,9 +9,9 @@ import org.bukkit.entity.Player;
 import io.turbo.random.quackCmd.menu.QuackMenu;
 
 /*
- * @author TurboMaxe
- * @since 2/5/2026
+ * Created on 2/5/2026
  *
+ * @author TurboMaxe
  */
 
 @Command(name = "quack")
