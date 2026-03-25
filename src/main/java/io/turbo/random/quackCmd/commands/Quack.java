@@ -17,11 +17,11 @@ import io.turbo.random.quackCmd.menu.QuackMenu;
 @Command(name = "quack")
 @Permission("quackcmd.quack")
 public class Quack {
+       
        @Execute()
-        void oncommand(@Context CommandSender sender) {
-
-            if (sender instanceof Player player) {
-                new QuackMenu().open(player);
+        void on(@Context CommandSender sender) {
+            if (sender instanceof Player player) { 
+              new QuackMenu().open(player); 
             }
         }
     }
