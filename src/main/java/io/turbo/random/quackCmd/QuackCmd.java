@@ -20,7 +20,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.plugin.java.JavaPlugin;
 import io.turbo.random.quackCmd.commands.Quack;
@@ -35,7 +34,7 @@ import java.util.HashMap;
 * @since 2/5/2026
 */
 
-public final class QuackCmd extends JavaPlugin implements Listener {
+public final class QuackCmd extends JavaPlugin {
     private LiteCommands<CommandSender> liteCommands;
     @Getter public static QuackCmd instance;
 
